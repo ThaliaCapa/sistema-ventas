@@ -31,9 +31,7 @@ class ResetPasswordController extends Controller
                 $this->resetPassword($user, $password);
             }
         );
-
-        dd($status);
-
+        
         return $status == Password::PASSWORD_RESET
                     ? $this->sendResetResponse($request, $status)
                     : $this->sendResetFailedResponse($request, $status);

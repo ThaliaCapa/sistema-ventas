@@ -1,0 +1,541 @@
+/* =========================================================
+   LOGIN PERSONALIZADO - BITEK
+   Sistema de Ventas
+========================================================= */
+
+
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body.login-page-custom {
+    min-height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    background: #0F172A;
+    color: #2c3e50;
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+========================================================= */
+
+.login-container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+}
+
+
+/* =========================================================
+   IDENTIDAD / LOGO
+========================================================= */
+
+.login-brand {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+
+/* LOGO */
+
+.login-logo {
+    width: 300px;
+    height: auto;
+
+    object-fit: contain;
+
+    display: block;
+    margin: 0 auto;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Pequeño efecto elegante */
+
+.login-logo:hover {
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   TARJETA DEL LOGIN
+========================================================= */
+
+.login-card-custom {
+    width: 100%;
+    max-width: 440px;
+
+    background: #FFFFFF;
+
+    border-radius: 20px;
+
+    padding: 38px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.20);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.login-title {
+    font-size: 26px;
+    font-weight: 800;
+
+    color: #25364a;
+
+    margin-bottom: 8px;
+
+    letter-spacing: -0.3px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   SUBTÍTULO
+========================================================= */
+
+.login-subtitle {
+    font-size: 14px;
+
+    color: #475569;
+
+    margin-bottom: 30px;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   GRUPOS DEL FORMULARIO
+========================================================= */
+
+.form-group-custom {
+    margin-bottom: 22px;
+}
+
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+.login-label {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #3d4b5c;
+
+    margin-bottom: 9px;
+}
+
+
+/* =========================================================
+   CONTENEDOR DE INPUT
+========================================================= */
+
+.login-input-group {
+    position: relative;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.login-input {
+    width: 100%;
+
+    height: 52px;
+
+    border: 1px solid #d6dee8;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    padding-left: 16px;
+    padding-right: 48px;
+
+    font-size: 14px;
+
+    color: #2f3e4f;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.2s ease;
+}
+
+
+/* Placeholder */
+
+.login-input::placeholder {
+    color: #a0acb8;
+}
+
+
+/* Focus */
+
+.login-input:focus {
+    border-color: #3B82F6;
+
+    box-shadow:
+        0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+
+/* =========================================================
+   ICONOS DE INPUTS
+========================================================= */
+
+.login-input-icon {
+    position: absolute;
+
+    left: 16px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #7d8da0;
+
+    font-size: 16px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MOSTRAR / OCULTAR CONTRASEÑA
+========================================================= */
+
+.password-toggle {
+    position: absolute;
+
+    right: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: #6e7f91;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    padding: 5px;
+
+    transition: color 0.25s ease;
+}
+
+
+.password-toggle:hover {
+    color: #3B82F6;
+}
+
+
+/* =========================================================
+   OPCIONES LOGIN
+========================================================= */
+
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 5px;
+    margin-bottom: 28px;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   RECORDARME
+========================================================= */
+
+.remember-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #5f6d7a;
+    cursor: pointer;
+}
+
+
+.remember-container input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #3B82F6;
+}
+
+
+/* =========================================================
+   OLVIDASTE CONTRASEÑA
+========================================================= */
+
+.forgot-password {
+    color: #318bd1;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+}
+
+
+.forgot-password:hover {
+    color: #1d6fae;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   BOTÓN PRINCIPAL
+========================================================= */
+
+.login-button {
+    width: 100%;
+    height: 54px;
+    border: none;
+    border-radius: 11px;
+    background: #3B82F6;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+    box-shadow:
+        0 8px 18px rgba(59, 130, 246, 0.25);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* Hover botón */
+
+.login-button:hover {
+    background: #2563EB;
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 24px rgba(59, 130, 246, 0.32);
+}
+
+
+/* Al hacer clic */
+
+.login-button:active {
+    transform: translateY(0);
+    box-shadow:
+        0 6px 14px rgba(59, 130, 246, 0.20);
+}
+
+
+/* =========================================================
+   ICONO DEL BOTÓN
+========================================================= */
+
+.login-button i {
+    margin-right: 7px;
+}
+
+
+/* =========================================================
+   ERRORES
+========================================================= */
+
+.login-error {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 13px;
+
+    color: #dc3545;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MENSAJE DE ÉXITO
+========================================================= */
+
+.login-success {
+    margin-bottom: 18px;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    text-align: center;
+
+    color: #166534;
+
+    background: #F0FDF4;
+
+    border: 1px solid #BBF7D0;
+}
+
+
+/* =========================================================
+   VOLVER AL LOGIN
+========================================================= */
+
+.back-to-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-to-login a {
+  color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    transition: color 0.25s ease;
+}
+
+.back-to-login a:hover {
+    color: #3B82F6;
+    text-decoration: none;
+}
+
+.back-to-login i {
+    margin-right: 7px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.login-footer {
+    margin-top: 22px;
+
+    text-align: center;
+}
+
+
+.login-footer-line {
+    width: 100%;
+
+    height: 1px;
+
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(0, 0, 0, 0.15),
+        transparent
+    );
+
+    margin-bottom: 12px;
+}
+
+
+.login-footer span {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    color: #8a8a8a;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLETS Y CELULARES
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .login-container {
+        padding: 25px 15px;
+    }
+
+
+    /* Logo */
+
+    .login-logo {
+        width: 155px;
+    }
+
+
+    /* Tarjeta */
+
+    .login-card-custom {
+        padding: 30px 24px;
+
+        border-radius: 18px;
+    }
+
+
+    /* Título */
+
+    .login-title {
+        font-size: 24px;
+    }
+}
+
+
+/* =========================================================
+   CELULARES PEQUEÑOS
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .login-options {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 14px;
+    }
+
+
+    .login-card-custom {
+        padding: 25px 20px;
+    }
+
+
+    .login-logo {
+        width: 140px;
+    }
+}

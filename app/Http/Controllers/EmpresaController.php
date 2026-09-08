@@ -112,7 +112,7 @@ class EmpresaController extends Controller
             'país'          => $pais ?? 'Peru',
             'nombre_empresa' => $request->nombre_empresa,
             'tipo_empresa'  => $request->tipo_empresa,
-            'nit'           => $request->ruc,
+            'ruc'           => $request->ruc,
             'telefono'      => $request->telefono,
             'correo'        => $request->correo,
             'moneda'        => $request->moneda,
@@ -144,14 +144,58 @@ class EmpresaController extends Controller
         //
     }
 
-    public function edit(Empresa $empresa)
+    public function edit()
     {
-        //
+        $empresa = auth()->user()->empresa;
+        if (!$empresa) {
+            return redirect()->back()
+                ->with('error', 'No tienes una empresa asignada.');
+        }
+        return view('admin.empresas.edit', compact('empresa'));
     }
 
-    public function update(Request $request, Empresa $empresa)
+    public function update(Request $request)
     {
-        //
+        $empresa = auth()->user()->empresa;
+
+        if (!$empresa) {
+            return redirect()->back()
+                ->with('error', 'No tienes una empresa asignada.');
+        }
+
+        $request->validate([
+            'nombre_empresa' => 'required|string|max:255',
+            'telefono'       => 'required|string|max:30',
+            'correo'         => 'required|email|max:255',
+            'direccion'      => 'required|string|max:255',
+            'codigo_postal'  => 'nullable|string|max:20',
+            'moneda'         => 'required|string|max:10',
+            'logo'           => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $datos = [
+            'nombre_empresa' => $request->nombre_empresa,
+            'telefono'       => $request->telefono,
+            'correo'         => $request->correo,
+            'direccion'      => $request->direccion,
+            'codigo_postal'  => $request->codigo_postal,
+            'moneda'         => $request->moneda,
+        ];
+
+        // Actualizar logo si el usuario seleccionó uno nuevo
+        if ($request->hasFile('logo')) {
+
+            $logoPath = $request->file('logo')
+                ->store('logos', 'public');
+
+            $datos['logo'] = $logoPath;
+        }
+
+        $empresa->update($datos);
+
+        return redirect()
+            ->route('admin.empresas.edit')
+            ->with('success', 'Los datos de la empresa fueron actualizados correctamente.');
     }
 
     public function destroy(Empresa $empresa)
