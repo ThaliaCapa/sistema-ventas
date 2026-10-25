@@ -53,14 +53,11 @@ body.login-page-custom {
 /* LOGO */
 
 .login-logo {
-    width: 300px;
+    width: 200px;
     height: auto;
-
     object-fit: contain;
-
     display: block;
-    margin: 0 auto;
-
+    margin: 0 auto 20px;
     transition: transform 0.3s ease;
 }
 

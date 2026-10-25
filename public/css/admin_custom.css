@@ -1,39 +1,56 @@
 /* =========================================================
    SISTEMA DE VENTAS
-   DISEÑO GENERAL
+   DISEÑO GENERAL - DASHBOARD MODERNO
+   SOLO ESTILOS / NO MODIFICA FUNCIONALIDAD
    ========================================================= */
 
 
 /* =========================================================
-   VARIABLES
+   1. VARIABLES
    ========================================================= */
 
 :root {
-    --azul-oscuro: #0F172A;
-    --azul-sidebar: #0F172A;
-    --azul-hover: #1E293B;
-    --azul-principal: #2563EB;
-    --azul-claro: #3B82F6;
+    --sv-navy: #0f172a;
+    --sv-navy-2: #172554;
+    --sv-sidebar-hover: #1e293b;
 
-    --blanco: #FFFFFF;
+    --sv-primary: #2563eb;
+    --sv-primary-light: #3b82f6;
+    --sv-primary-soft: #eff6ff;
 
-    --texto-principal: #1E293B;
-    --texto-secundario: #64748B;
+    --sv-white: #ffffff;
+    --sv-background: #f5f7fb;
+    --sv-surface: #ffffff;
 
-    --fondo: #EEF2F7;
-    --borde: #E2E8F0;
+    --sv-text: #172033;
+    --sv-text-2: #475569;
+    --sv-muted: #64748b;
 
-    --verde: #10B981;
-    --naranja: #F59E0B;
-    --rojo: #EF4444;
-    --morado: #8B5CF6;
+    --sv-border: #e5eaf1;
+    --sv-border-light: #eef2f7;
 
-    --radio: 14px;
+    --sv-success: #10b981;
+    --sv-success-soft: #ecfdf5;
+
+    --sv-warning: #f59e0b;
+    --sv-warning-soft: #fffbeb;
+
+    --sv-danger: #ef4444;
+    --sv-danger-soft: #fef2f2;
+
+    --sv-purple: #7c3aed;
+    --sv-purple-soft: #f5f3ff;
+
+    --sv-radius: 16px;
+    --sv-radius-sm: 10px;
+
+    --sv-shadow: 0 4px 18px rgba(15, 23, 42, 0.045);
+    --sv-shadow-hover: 0 12px 30px rgba(15, 23, 42, 0.09);
 }
 
 
 /* =========================================================
-   CONFIGURACIÓN GENERAL
+   2. CONFIGURACIÓN GENERAL
    ========================================================= */
 
 html,
@@ -43,105 +60,116 @@ body {
 
 body {
     font-family: "Nunito", Arial, sans-serif;
-    background: var(--fondo);
-    color: var(--texto-principal);
+    background: var(--sv-background);
+    color: var(--sv-text);
+    -webkit-font-smoothing: antialiased;
+}
+
+.content-wrapper {
+    background: var(--sv-background) !important;
+}
+
+.content {
+    padding: 8px 25px 28px;
+}
+
+.content-header {
+    padding: 22px 25px 12px;
 }
 
 
 /* =========================================================
-   SIDEBAR
+   3. SIDEBAR
    ========================================================= */
 
 .main-sidebar,
 .main-sidebar::before {
-    background: #0F172A !important;
-    background-color: #0F172A !important;
+    background: var(--sv-navy) !important;
+    background-color: var(--sv-navy) !important;
 }
 
 .main-sidebar {
-    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.045) !important;
+    box-shadow: 4px 0 18px rgba(15, 23, 42, 0.10) !important;
 }
-
-
-/* =========================================================
-   ÁREA INTERNA DEL SIDEBAR
-   ========================================================= */
 
 .main-sidebar .sidebar {
-    background: #0F172A !important;
+    background: var(--sv-navy) !important;
 }
 
 
 /* =========================================================
-   LOGO / MARCA
+   4. MARCA / LOGO
    ========================================================= */
 
 .brand-link {
-    background: #0F172A !important;
-    background-color: #0F172A !important;
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-
-    min-height: 68px;
+    min-height: 70px;
 
     display: flex !important;
     align-items: center;
 
-    padding: 10px 15px !important;
+    padding: 10px 17px !important;
+
+    background: var(--sv-navy) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+
+    transition: background 0.2s ease;
 }
 
-
-/* Imagen del logo */
+.brand-link:hover {
+    background: #111c32 !important;
+}
 
 .brand-link .brand-image {
-    width: 44px !important;
-    height: 44px !important;
+    width: 43px !important;
+    height: 43px !important;
 
     object-fit: contain;
 
-    margin-left: 0 !important;
-    margin-right: 10px !important;
+    margin: 0 11px 0 0 !important;
 
     float: none !important;
 }
 
-
-/* Texto del logo */
-
 .brand-link .brand-text {
-    color: #FFFFFF !important;
+    color: #ffffff !important;
 
     font-size: 16px;
-
-    font-weight: 700;
+    font-weight: 800;
 
     line-height: 1.2;
+    letter-spacing: -0.2px;
 }
 
 
 /* =========================================================
-   MENÚ LATERAL
+   5. MENÚ LATERAL
    ========================================================= */
 
 .nav-sidebar {
     padding-top: 12px;
+    padding-bottom: 20px;
 }
 
 .nav-sidebar .nav-item {
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
-
-/* Links */
-
 .nav-sidebar .nav-link {
-    color: #CBD5E1 !important;
+    display: flex;
+    align-items: center;
 
-    border-radius: 8px;
+    min-height: 43px;
 
-    margin: 3px 10px;
+    margin: 3px 11px;
+    padding: 10px 12px;
 
-    padding: 11px 12px;
+    border-radius: 10px;
+
+    color: #cbd5e1 !important;
+
+    font-size: 13px;
+    font-weight: 600;
 
     transition:
         background 0.2s ease,
@@ -149,266 +177,270 @@ body {
         transform 0.2s ease;
 }
 
-
-/* Iconos */
+.nav-sidebar .nav-link p {
+    margin: 0 0 0 4px;
+}
 
 .nav-sidebar .nav-link i {
-    color: #94A3B8 !important;
-
     width: 22px;
 
+    margin-right: 7px;
+
+    color: #94a3b8 !important;
+
     font-size: 15px;
+
+    text-align: center;
+
+    transition: color 0.2s ease;
 }
-
-
-/* Hover */
 
 .nav-sidebar .nav-link:hover {
-    background: #1E293B !important;
-
-    color: #FFFFFF !important;
+    background: var(--sv-sidebar-hover) !important;
+    color: #ffffff !important;
 }
-
-
-/* Icono hover */
 
 .nav-sidebar .nav-link:hover i {
-    color: #60A5FA !important;
+    color: #60a5fa !important;
 }
-
-
-/* Elemento activo */
 
 .nav-sidebar .nav-link.active {
-    background: #2563EB !important;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    ) !important;
 
-    color: #FFFFFF !important;
+    color: #ffffff !important;
 
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.30);
+    box-shadow:
+        0 7px 18px rgba(37, 99, 235, 0.25);
 }
-
-
-/* Icono activo */
 
 .nav-sidebar .nav-link.active i {
-    color: #FFFFFF !important;
+    color: #ffffff !important;
 }
-
-
-/* Flechas */
 
 .nav-sidebar .nav-link > .right,
 .nav-sidebar .nav-link > p > .right {
-    color: #94A3B8 !important;
+    color: #94a3b8 !important;
 }
 
 
 /* =========================================================
-   TÍTULOS DE SECCIONES DEL MENÚ
+   6. TÍTULOS DE SECCIÓN DEL SIDEBAR
    ========================================================= */
 
 .nav-header {
-    color: #64748B !important;
+    padding: 19px 20px 7px !important;
 
-    font-size: 10px;
+    color: #64748b !important;
 
-    font-weight: 700;
+    font-size: 10px !important;
+    font-weight: 800 !important;
 
-    letter-spacing: 0.8px;
+    letter-spacing: 0.9px;
 
-    padding: 18px 20px 8px !important;
+    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   NAVBAR SUPERIOR
+   7. NAVBAR SUPERIOR
    ========================================================= */
 
 .main-header {
-    background: #FFFFFF !important;
+    min-height: 58px;
 
-    border-bottom: 1px solid var(--borde) !important;
+    background: rgba(255, 255, 255, 0.96) !important;
 
-    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+    border-bottom: 1px solid var(--sv-border) !important;
+
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.035);
+
+    backdrop-filter: blur(8px);
 }
-
-
-/* Links navbar */
 
 .main-header .nav-link {
-    color: var(--texto-secundario) !important;
-}
+    height: 58px;
 
-
-/* Hover navbar */
-
-.main-header .nav-link:hover {
-    color: var(--azul-principal) !important;
-}
-
-
-/* Botón menú */
-
-.main-header .fa-bars {
-    font-size: 18px;
-}
-
-
-/* =========================================================
-   ÁREA PRINCIPAL
-   ========================================================= */
-
-.content-wrapper {
-    background: #EEF2F7 !important;
-}
-
-
-/* =========================================================
-   CABECERA DEL DASHBOARD
-   ========================================================= */
-
-.content-header {
-    padding: 22px 25px 10px;
-}
-
-
-.dashboard-header {
     display: flex;
-
     align-items: center;
 
+    color: var(--sv-muted) !important;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.main-header .nav-link:hover {
+    color: var(--sv-primary) !important;
+    background: var(--sv-primary-soft);
+}
+
+.main-header .fa-bars {
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   8. DASHBOARD HEADER
+   ========================================================= */
+
+.dashboard-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
     justify-content: space-between;
 
     gap: 20px;
 
-    background: linear-gradient(
-        135deg,
-        #F8FAFC 0%,
-        #EEF4FF 100%
-    );
+    min-height: 112px;
 
-    border: 1px solid #E2E8F0;
+    padding: 23px 25px;
 
-    border-radius: 16px;
+    overflow: hidden;
 
-    padding: 20px 22px;
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f5f9ff 62%,
+            #eef4ff 100%
+        );
 
-    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+    border: 1px solid #e1e8f2;
+    border-radius: var(--sv-radius);
+
+    box-shadow: var(--sv-shadow);
 }
 
+.dashboard-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    right: -90px;
+    top: -125px;
+
+    border-radius: 50%;
+
+    background: rgba(37, 99, 235, 0.055);
+
+    pointer-events: none;
+}
 
 .dashboard-header h1 {
+    position: relative;
+    z-index: 1;
+
     margin: 0;
 
-    color: var(--texto-principal);
+    color: var(--sv-text);
 
-    font-size: 29px;
-
+    font-size: 28px;
     font-weight: 800;
 
-    letter-spacing: -0.5px;
+    line-height: 1.2;
+
+    letter-spacing: -0.6px;
 }
 
-
 .dashboard-header p {
-    margin: 6px 0 0;
+    position: relative;
+    z-index: 1;
 
-    color: var(--texto-secundario);
+    margin: 7px 0 0;
 
-    font-size: 14px;
+    color: var(--sv-muted);
 
+    font-size: 13px;
     font-weight: 500;
 }
 
-
 .dashboard-date {
-    display: flex;
+    position: relative;
+    z-index: 2;
 
+    display: inline-flex;
     align-items: center;
 
     gap: 8px;
 
-    background: #FFFFFF;
+    padding: 10px 14px;
 
-    border: 1px solid var(--borde);
+    background: rgba(255, 255, 255, 0.88);
 
-    border-radius: 10px;
+    border: 1px solid #dfe7f2;
+    border-radius: var(--sv-radius-sm);
 
-    padding: 10px 15px;
+    color: var(--sv-text-2);
 
-    color: var(--texto-secundario);
+    font-size: 12px;
+    font-weight: 700;
 
-    font-size: 13px;
-
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
 }
-
 
 .dashboard-date i {
-    color: var(--azul-principal);
+    color: var(--sv-primary);
+    font-size: 14px;
 }
 
 
 /* =========================================================
-   CONTENIDO
-   ========================================================= */
-
-.content {
-    padding: 10px 25px 25px;
-}
-
-
-/* =========================================================
-   TARJETAS PRINCIPALES
+   9. TARJETAS KPI
    ========================================================= */
 
 .dashboard-cards {
-    margin-bottom: 20px;
+    margin-top: 22px;
+    margin-bottom: 0;
 }
 
+.dashboard-cards > [class*="col-"] {
+    margin-bottom: 20px;
+}
 
 .dashboard-card {
     position: relative;
 
     display: flex;
-
     align-items: center;
 
-    min-height: 128px;
+    min-height: 142px;
 
-    background: #FFFFFF;
+    padding: 23px;
 
-    border: 1px solid #E2E8F0;
+    overflow: hidden;
 
-    border-radius: 16px;
+    background: var(--sv-surface);
 
-    padding: 22px;
+    border: 1px solid var(--sv-border);
+    border-radius: var(--sv-radius);
 
-    margin-bottom: 20px;
-
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.045);
+    box-shadow: var(--sv-shadow);
 
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease,
         border-color 0.25s ease;
-
-    overflow: hidden;
 }
-
-
-/* Detalle decorativo */
 
 .dashboard-card::after {
     content: "";
 
     position: absolute;
 
-    right: -35px;
-    top: -35px;
+    width: 110px;
+    height: 110px;
 
-    width: 100px;
-    height: 100px;
+    top: -48px;
+    right: -38px;
 
     border-radius: 50%;
 
@@ -417,314 +449,300 @@ body {
     pointer-events: none;
 }
 
-
-/* Hover */
-
 .dashboard-card:hover {
     transform: translateY(-3px);
 
-    border-color: #CBD5E1;
+    border-color: #d7e0ec;
 
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    box-shadow: var(--sv-shadow-hover);
 }
 
 
 /* =========================================================
-   ICONOS DE TARJETAS
+   10. ICONOS KPI
    ========================================================= */
 
 .card-icon {
     position: relative;
-
     z-index: 1;
 
-    width: 56px;
-    height: 56px;
-
-    min-width: 56px;
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    border-radius: 14px;
 
     margin-right: 17px;
 
-    font-size: 21px;
+    border-radius: 15px;
+
+    font-size: 20px;
 
     transition: transform 0.25s ease;
 }
 
-
 .dashboard-card:hover .card-icon {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
-
-
-/* Ventas */
 
 .sales-icon {
-    background: rgba(37, 99, 235, 0.10);
-
-    color: var(--azul-principal);
+    color: #2563eb;
+    background: #eaf2ff;
 }
-
-
-/* Clientes */
 
 .clients-icon {
-    background: rgba(16, 185, 129, 0.10);
-
-    color: var(--verde);
+    color: #059669;
+    background: #e8f9f2;
 }
-
-
-/* Productos */
 
 .products-icon {
-    background: rgba(139, 92, 246, 0.10);
-
-    color: var(--morado);
+    color: #7c3aed;
+    background: #f0ebff;
 }
 
-
-/* Stock */
-
 .stock-icon {
-    background: rgba(245, 158, 11, 0.10);
-
-    color: var(--naranja);
+    color: #d97706;
+    background: #fff4df;
 }
 
 
 /* =========================================================
-   INFORMACIÓN DE LAS TARJETAS
+   11. INFORMACIÓN KPI
    ========================================================= */
 
 .card-info {
     position: relative;
-
     z-index: 1;
 
-    display: flex;
-
-    flex-direction: column;
+    min-width: 0;
 }
-
 
 .card-info h3 {
     margin: 0;
 
-    color: var(--texto-principal);
+    color: var(--sv-text);
 
     font-size: 25px;
-
     font-weight: 800;
 
-    line-height: 1.2;
+    line-height: 1.15;
 
-    letter-spacing: -0.3px;
+    letter-spacing: -0.5px;
 }
 
-
 .card-info p {
-    margin: 5px 0 0;
+    margin: 7px 0 0;
 
-    color: var(--texto-secundario);
+    color: var(--sv-muted);
 
-    font-size: 13px;
-
-    font-weight: 500;
+    font-size: 12.5px;
+    font-weight: 600;
 }
 
 
 /* =========================================================
-   PANELES DEL DASHBOARD
+   12. PANELES
    ========================================================= */
 
 .dashboard-panel {
-    background: #FFFFFF;
-
-    border: 1px solid #E2E8F0;
-
-    border-radius: 16px;
+    height: 100%;
 
     margin-bottom: 20px;
 
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.045);
-
     overflow: hidden;
 
+    background: var(--sv-surface);
+
+    border: 1px solid var(--sv-border);
+    border-radius: var(--sv-radius);
+
+    box-shadow: var(--sv-shadow);
+
     transition:
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-
 .dashboard-panel:hover {
-    border-color: #CBD5E1;
-
-    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+    border-color: #d8e1ec;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
 
 
 /* =========================================================
-   CABECERA DE LOS PANELES
+   13. CABECERA DE PANELES
    ========================================================= */
 
 .panel-header {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     gap: 15px;
 
-    min-height: 62px;
+    min-height: 66px;
 
-    padding: 15px 20px;
+    padding: 14px 20px;
 
-    border-bottom: 1px solid var(--borde);
+    background: #ffffff;
 
-    background: #F8FAFC;
+    border-bottom: 1px solid var(--sv-border-light);
 }
 
+.panel-header > div {
+    display: flex;
+    align-items: center;
+}
 
 .panel-title-icon {
-    color: var(--azul-principal);
+    width: 37px;
+    height: 37px;
 
-    margin-right: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 10px;
+
+    border-radius: 10px;
+
+    background: var(--sv-primary-soft);
+
+    color: var(--sv-primary);
 
     font-size: 15px;
 }
 
+.panel-title {
+    color: var(--sv-text);
 
-.panel-header h3,
-.panel-header .panel-title {
-    margin: 0;
-
-    color: var(--texto-principal);
-
-    font-size: 16px;
-
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 800;
 }
 
 
 /* =========================================================
-   BOTONES
+   14. BOTONES DE PANELES
    ========================================================= */
 
 .period-button,
 .view-button {
-    border: 1px solid var(--borde);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    background: #FFFFFF;
+    border: 1px solid var(--sv-border);
 
-    color: var(--texto-secundario);
+    background: #ffffff;
 
-    border-radius: 8px;
+    color: var(--sv-text-2);
 
-    padding: 8px 13px;
+    border-radius: 9px;
 
-    font-size: 12px;
+    padding: 8px 12px;
 
-    font-weight: 600;
+    font-family: inherit;
+
+    font-size: 11.5px;
+    font-weight: 700;
 
     cursor: pointer;
 
     transition:
         background 0.2s ease,
-        border-color 0.2s ease,
         color 0.2s ease,
+        border-color 0.2s ease,
         transform 0.2s ease;
 }
 
-
 .period-button:hover,
 .view-button:hover {
-    background: #EFF6FF;
+    background: var(--sv-primary-soft);
 
-    border-color: #BFDBFE;
+    border-color: #bfdbfe;
 
-    color: var(--azul-principal);
+    color: var(--sv-primary);
 
     transform: translateY(-1px);
 }
 
 
 /* =========================================================
-   GRÁFICO
+   15. ÁREA DEL GRÁFICO
    ========================================================= */
 
 .chart-placeholder {
-    min-height: 280px;
+    min-height: 286px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     padding: 30px;
-}
 
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #fbfcfe 100%
+        );
+}
 
 .chart-message {
     text-align: center;
-
-    color: var(--texto-secundario);
 }
-
 
 .chart-icon {
-    display: block;
+    width: 62px;
+    height: 62px;
 
-    margin-bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    color: #94A3B8;
+    margin-bottom: 14px;
 
-    font-size: 42px;
+    border-radius: 17px;
+
+    background: var(--sv-primary-soft);
+
+    color: var(--sv-primary);
+
+    font-size: 24px;
 }
-
 
 .chart-message p {
     margin: 0;
 
+    color: var(--sv-text-2);
+
     font-size: 13px;
-
-    font-weight: 500;
+    font-weight: 700;
 }
-
 
 .chart-message small {
     display: block;
 
-    margin-top: 5px;
+    margin-top: 6px;
 
-    color: #94A3B8;
+    color: #94a3b8;
 
-    font-size: 11px;
+    font-size: 11.5px;
 }
 
 
 /* =========================================================
-   ESTADO VACÍO
+   16. STOCK BAJO / ESTADO VACÍO
    ========================================================= */
 
 .empty-state {
-    min-height: 180px;
+    min-height: 286px;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
 
     padding: 30px;
@@ -732,30 +750,42 @@ body {
     text-align: center;
 }
 
-
 .empty-icon {
-    margin-bottom: 12px;
+    width: 62px;
+    height: 62px;
 
-    color: #94A3B8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    font-size: 38px;
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background: var(--sv-success-soft);
+
+    color: var(--sv-success);
+
+    font-size: 23px;
 }
-
 
 .empty-state p {
     margin: 0;
 
-    color: var(--texto-secundario);
+    color: var(--sv-text-2);
 
     font-size: 13px;
-
-    font-weight: 500;
+    font-weight: 600;
 }
 
 
 /* =========================================================
-   TABLA
+   17. TABLA
    ========================================================= */
+
+.table-responsive {
+    border-radius: 0 0 var(--sv-radius) var(--sv-radius);
+}
 
 .dashboard-table {
     width: 100%;
@@ -765,73 +795,77 @@ body {
     border-collapse: collapse;
 }
 
-
 .dashboard-table thead th {
-    background: #F8FAFC;
+    padding: 13px 17px;
 
-    color: #64748B;
+    background: #f8fafc;
 
-    border-bottom: 1px solid var(--borde);
+    border-bottom: 1px solid var(--sv-border);
 
-    padding: 13px 15px;
+    color: #64748b;
 
-    font-size: 11px;
+    font-size: 10.5px;
+    font-weight: 800;
 
-    font-weight: 700;
+    letter-spacing: 0.45px;
 
     text-transform: uppercase;
 
-    letter-spacing: 0.4px;
+    white-space: nowrap;
 }
-
 
 .dashboard-table tbody td {
-    padding: 15px;
+    padding: 16px 17px;
 
-    border-bottom: 1px solid #F1F5F9;
+    border-bottom: 1px solid #f0f3f7;
 
-    color: var(--texto-principal);
+    color: var(--sv-text-2);
 
-    font-size: 13px;
+    font-size: 12.5px;
 }
-
 
 .dashboard-table tbody tr {
     transition: background 0.2s ease;
 }
 
-
 .dashboard-table tbody tr:hover {
-    background: #F8FAFC;
+    background: #f8fbff;
 }
 
+.dashboard-table tbody tr:last-child td {
+    border-bottom: none;
+}
 
-.table-empty {
-    padding: 40px 20px !important;
+.dashboard-table .table-empty {
+    height: 105px;
+
+    padding: 30px 20px !important;
 
     text-align: center;
 
-    color: var(--texto-secundario);
+    color: #94a3b8;
+
+    font-size: 12.5px;
 }
 
 
 /* =========================================================
-   FOOTER
+   18. FOOTER
    ========================================================= */
 
 .main-footer {
-    background: #FFFFFF !important;
+    background: #ffffff !important;
 
-    border-top: 1px solid var(--borde) !important;
+    border-top: 1px solid var(--sv-border) !important;
 
-    color: #94A3B8 !important;
+    color: #94a3b8 !important;
 
-    font-size: 12px;
+    font-size: 11.5px;
 }
 
 
 /* =========================================================
-   QUITAR SOMBRAS PESADAS DE ADMINLTE
+   19. QUITAR ESTILO PESADO DE ADMINLTE
    ========================================================= */
 
 .elevation-1,
@@ -844,25 +878,21 @@ body {
 
 
 /* =========================================================
-   SCROLLBAR DEL SIDEBAR
+   20. SCROLLBAR DEL SIDEBAR
    ========================================================= */
 
 .main-sidebar ::-webkit-scrollbar {
     width: 5px;
 }
 
-
 .main-sidebar ::-webkit-scrollbar-track {
-    background: #0F172A;
+    background: var(--sv-navy);
 }
-
 
 .main-sidebar ::-webkit-scrollbar-thumb {
     background: #334155;
-
     border-radius: 10px;
 }
-
 
 .main-sidebar ::-webkit-scrollbar-thumb:hover {
     background: #475569;
@@ -870,128 +900,140 @@ body {
 
 
 /* =========================================================
-   RESPONSIVE - TABLET
+   21. RESPONSIVE - TABLET
    ========================================================= */
 
-@media (max-width: 991px) {
+@media (max-width: 991.98px) {
+
+    .content-header {
+        padding: 20px 20px 10px;
+    }
+
+    .content {
+        padding: 8px 20px 25px;
+    }
 
     .dashboard-header {
         align-items: flex-start;
-
-        flex-direction: column;
     }
 
-
-    .dashboard-date {
-        align-self: flex-start;
-    }
-
-
-    .content-header {
-        padding-left: 20px;
-
-        padding-right: 20px;
-    }
-
-
-    .content {
-        padding-left: 20px;
-
-        padding-right: 20px;
-    }
 }
 
 
 /* =========================================================
-   RESPONSIVE - CELULAR
+   22. RESPONSIVE - CELULAR
    ========================================================= */
 
-@media (max-width: 767px) {
-
-    .dashboard-header h1 {
-        font-size: 23px;
-    }
-
-
-    .dashboard-card {
-        min-height: 105px;
-
-        padding: 17px;
-    }
-
-
-    .card-icon {
-        width: 48px;
-        height: 48px;
-
-        min-width: 48px;
-
-        font-size: 18px;
-    }
-
-
-    .card-info h3 {
-        font-size: 21px;
-    }
-
-
-    .panel-header {
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-
-    .chart-placeholder {
-        min-height: 220px;
-    }
-
-
-    .dashboard-table {
-        min-width: 600px;
-    }
-
-
-    .dashboard-panel {
-        overflow-x: auto;
-    }
-}
-
-
-/* =========================================================
-   PANTALLAS PEQUEÑAS
-   ========================================================= */
-
-@media (max-width: 480px) {
+@media (max-width: 767.98px) {
 
     .content-header {
-        padding: 15px;
+        padding: 17px 15px 8px;
     }
-
 
     .content {
         padding: 5px 15px 20px;
     }
 
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        min-height: auto;
+
+        padding: 20px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 23px;
+    }
+
+    .dashboard-date {
+        width: auto;
+    }
+
+    .dashboard-card {
+        min-height: 118px;
+        padding: 19px;
+    }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+    }
+
+    .card-info h3 {
+        font-size: 22px;
+    }
+
+    .panel-header {
+        min-height: 60px;
+        padding: 13px 16px;
+    }
+
+    .chart-placeholder {
+        min-height: 230px;
+    }
+
+    .empty-state {
+        min-height: 220px;
+    }
+
+    .dashboard-table {
+        min-width: 620px;
+    }
+
+    .dashboard-panel {
+        overflow-x: auto;
+    }
+
+}
+
+
+/* =========================================================
+   23. RESPONSIVE - PANTALLAS PEQUEÑAS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .dashboard-header {
+        border-radius: 14px;
+    }
 
     .dashboard-header h1 {
         font-size: 21px;
     }
 
-
     .dashboard-header p {
-        font-size: 13px;
+        font-size: 12.5px;
     }
-
 
     .dashboard-date {
         width: 100%;
-
         justify-content: center;
     }
 
-
     .dashboard-card {
         border-radius: 14px;
+        padding: 17px;
     }
+
+    .card-icon {
+        width: 47px;
+        height: 47px;
+        min-width: 47px;
+
+        margin-right: 13px;
+
+        border-radius: 13px;
+    }
+
+    .card-info h3 {
+        font-size: 21px;
+    }
+
+    .panel-title {
+        font-size: 14px;
+    }
+
 }

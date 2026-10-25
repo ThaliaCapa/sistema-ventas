@@ -36,39 +36,74 @@
     <div class="login-container">
 
 
-        <!-- IDENTIDAD DEL SISTEMA -->
+        <!-- ========================================= -->
+        <!-- IDENTIDAD / LOGO DE LA EMPRESA -->
+        <!-- ========================================= -->
+
         <div class="login-brand">
-            <!-- LOGO -->
-            <img
-                src="{{ asset('vendor/adminlte/dist/img/Logo_BITEK_1.png') }}"
-                alt="Logo BITEK"
-                class="login-logo">
+
+            @php
+                $empresa = \App\Models\Empresa::orderByDesc('id')->first();
+            @endphp
+
+
+            @if ($empresa && $empresa->logo)
+
+                <img
+                    src="{{ asset('storage/' . $empresa->logo) }}"
+                    alt="{{ $empresa->nombre_empresa }}"
+                    class="login-logo">
+
+            @endif
+
         </div>
 
 
+
+        <!-- ========================================= -->
         <!-- TARJETA DEL LOGIN -->
+        <!-- ========================================= -->
+
         <div class="login-card-custom">
+
+
             <!-- TITULO -->
+
             <h2 class="login-title">
+
                 Iniciar sesión
+
             </h2>
-            
+
+
             <!-- SUBTITULO -->
+
             <p class="login-subtitle">
+
                 Ingresa tus credenciales para continuar
+
             </p>
 
+
+
+            <!-- ========================================= -->
             <!-- FORMULARIO LOGIN -->
-            <form method="POST" action="{{ route('login') }}">
+            <!-- ========================================= -->
+
+            <form
+                method="POST"
+                action="{{ route('login') }}">
 
                 @csrf
 
 
-                <!-- ============================= -->
+
+                <!-- ========================================= -->
                 <!-- CORREO ELECTRÓNICO -->
-                <!-- ============================= -->
+                <!-- ========================================= -->
 
                 <div class="form-group-custom">
+
 
                     <label
                         for="email"
@@ -81,7 +116,7 @@
 
                     <div class="login-input-group">
 
-                        <!-- INPUT -->
+
                         <input
                             id="email"
                             type="email"
@@ -93,29 +128,39 @@
                             autocomplete="email"
                             autofocus>
 
+
                     </div>
 
 
+
                     <!-- ERROR EMAIL -->
+
                     @error('email')
 
                         <span class="login-error">
 
-                            {{ $message }}
+                             @if ($message === 'auth.failed')
+            El correo electrónico o la contraseña son incorrectos.
+        @else
+            {{ $message }}
+        @endif
+
 
                         </span>
 
                     @enderror
 
+
                 </div>
 
 
 
-                <!-- ============================= -->
+                <!-- ========================================= -->
                 <!-- CONTRASEÑA -->
-                <!-- ============================= -->
+                <!-- ========================================= -->
 
                 <div class="form-group-custom">
+
 
                     <label
                         for="password"
@@ -128,7 +173,7 @@
 
                     <div class="login-input-group">
 
-                        <!-- INPUT PASSWORD -->
+
                         <input
                             id="password"
                             type="password"
@@ -139,44 +184,42 @@
                             autocomplete="current-password">
 
 
-                        <!-- BOTÓN MOSTRAR CONTRASEÑA -->
+                        <!-- MOSTRAR CONTRASEÑA -->
+
                         <button
                             type="button"
                             class="password-toggle"
                             id="togglePassword">
-
                             <i class="fas fa-eye"></i>
-
                         </button>
-
-
                     </div>
 
-
                     <!-- ERROR PASSWORD -->
+
                     @error('password')
-
                         <span class="login-error">
-
-                            {{ $message }}
-
+                             @if ($message === 'auth.failed')
+                                El correo electrónico o la contraseña son incorrectos.
+                            @else
+                                {{ $message }}
+                            @endif
                         </span>
-
                     @enderror
-
                 </div>
 
 
 
-                <!-- ============================= -->
+                <!-- ========================================= -->
                 <!-- RECORDAR / OLVIDÉ CONTRASEÑA -->
-                <!-- ============================= -->
+                <!-- ========================================= -->
 
                 <div class="login-options">
 
 
                     <!-- RECORDARME -->
+
                     <label class="remember-container">
+
 
                         <input
                             type="checkbox"
@@ -184,15 +227,20 @@
                             name="remember"
                             {{ old('remember') ? 'checked' : '' }}>
 
+
                         <span>
+
                             Recordarme
+
                         </span>
+
 
                     </label>
 
 
 
                     <!-- OLVIDASTE CONTRASEÑA -->
+
                     @if (Route::has('password.request'))
 
                         <a
@@ -210,53 +258,77 @@
 
 
 
-                <!-- ============================= -->
+                <!-- ========================================= -->
                 <!-- BOTÓN LOGIN -->
-                <!-- ============================= -->
+                <!-- ========================================= -->
 
                 <button
                     type="submit"
                     class="login-button">
+
                     INICIAR SESIÓN
+
                 </button>
-                
-                    <!-- SEPARADOR Y COPYRIGHT -->
-                    <div class="login-footer">
-                        <div class="login-footer-line"></div>
-                        <span>
-                            © 2026 Sistema de Ventas
-                        </span>
-                    </div>
+
+
+
+                <!-- ========================================= -->
+                <!-- FOOTER -->
+                <!-- ========================================= -->
+
+                <div class="login-footer">
+
+
+                    <div class="login-footer-line"></div>
+
+
+                    <span>
+
+                        © 2026 Sistema de Ventas
+
+                    </span>
+
+
+                </div>
+
 
             </form>
+
+
         </div>
+
+
     </div>
 
 
 
-    <!-- ============================= -->
+    <!-- ========================================= -->
     <!-- JAVASCRIPT MOSTRAR CONTRASEÑA -->
-    <!-- ============================= -->
+    <!-- ========================================= -->
 
     <script>
 
-        const togglePassword = document.getElementById('togglePassword');
+        const togglePassword =
+            document.getElementById('togglePassword');
 
-        const password = document.getElementById('password');
+        const password =
+            document.getElementById('password');
 
 
         togglePassword.addEventListener('click', function () {
 
 
-            const type = password.getAttribute('type') === 'password'
-                ? 'text'
-                : 'password';
+            const type =
+                password.getAttribute('type') === 'password'
+                    ? 'text'
+                    : 'password';
 
 
             password.setAttribute('type', type);
 
 
-            const icon = this.querySelector('i');
+            const icon =
+                this.querySelector('i');
 
 
             icon.classList.toggle('fa-eye');

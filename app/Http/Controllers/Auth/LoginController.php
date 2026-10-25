@@ -12,29 +12,29 @@ class LoginController extends Controller
     | Login Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
+    | Este controlador maneja la autenticación de los usuarios.
     |
     */
 
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Después de iniciar sesión,
+     * redirigir al usuario al dashboard.
      *
      * @var string
      */
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
+     * Crear una nueva instancia del controlador.
      *
      * @return void
      */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
         $this->middleware('auth')->only('logout');
     }
 }

@@ -1,3 +1,4 @@
+
 @extends('adminlte::auth.auth-page', ['authType' => 'login'])
 
 @php
@@ -8,7 +9,38 @@
     } else {
         $passResetUrl = $passResetUrl ? url($passResetUrl) : '';
     }
+
+    $correoRecuperacion = old('email', $email ?? request()->query('email', ''));
+
+    $logoEmpresa = null;
+
+    if ($correoRecuperacion && filter_var($correoRecuperacion, FILTER_VALIDATE_EMAIL)) {
+        $usuarioLogo = \App\Models\User::with('empresa')
+            ->where('email', $correoRecuperacion)
+            ->first();
+
+        $empresaLogo = $usuarioLogo?->empresa;
+
+        if (
+            $empresaLogo &&
+            $empresaLogo->logo &&
+            \Illuminate\Support\Facades\Storage::disk('public')->exists($empresaLogo->logo)
+        ) {
+            $logoEmpresa = asset('storage/' . $empresaLogo->logo);
+        }
+    }
 @endphp
+
+@section('auth_logo')
+    @if ($logoEmpresa)
+        <div class="text-center mb-3">
+            <img
+                src="{{ $logoEmpresa }}"
+                alt="{{ $empresaLogo->nombre_empresa }}"
+                style="max-width: 220px; max-height: 120px; width: auto; height: auto; object-fit: contain;">
+        </div>
+    @endif
+@stop
 
 @section('auth_header', __('adminlte::adminlte.password_reset_message'))
 
@@ -21,8 +53,15 @@
 
         {{-- Email field --}}
         <div class="input-group mb-3">
-            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
+            <input
+                type="email"
+                name="email"
+                class="form-control @error('email') is-invalid @enderror"
+                value="{{ $correoRecuperacion }}"
+                placeholder="{{ __('adminlte::adminlte.email') }}"
+                autocomplete="email"
+                autofocus
+                required>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -39,8 +78,13 @@
 
         {{-- Password field --}}
         <div class="input-group mb-3">
-            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-                placeholder="{{ __('adminlte::adminlte.password') }}">
+            <input
+                type="password"
+                name="password"
+                class="form-control @error('password') is-invalid @enderror"
+                placeholder="{{ __('adminlte::adminlte.password') }}"
+                autocomplete="new-password"
+                required>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -57,9 +101,13 @@
 
         {{-- Password confirmation field --}}
         <div class="input-group mb-3">
-            <input type="password" name="password_confirmation"
+            <input
+                type="password"
+                name="password_confirmation"
                 class="form-control @error('password_confirmation') is-invalid @enderror"
-                placeholder="{{ trans('adminlte::adminlte.retype_password') }}">
+                placeholder="{{ trans('adminlte::adminlte.retype_password') }}"
+                autocomplete="new-password"
+                required>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -75,7 +123,9 @@
         </div>
 
         {{-- Confirm password reset button --}}
-        <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
+        <button
+            type="submit"
+            class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
             <span class="fas fa-sync-alt"></span>
             {{ __('adminlte::adminlte.reset_password') }}
         </button>

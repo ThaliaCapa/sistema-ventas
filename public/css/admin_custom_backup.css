@@ -1,0 +1,997 @@
+/* =========================================================
+   SISTEMA DE VENTAS
+   DISEÑO GENERAL
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+    --azul-oscuro: #0F172A;
+    --azul-sidebar: #0F172A;
+    --azul-hover: #1E293B;
+    --azul-principal: #2563EB;
+    --azul-claro: #3B82F6;
+
+    --blanco: #FFFFFF;
+
+    --texto-principal: #1E293B;
+    --texto-secundario: #64748B;
+
+    --fondo: #EEF2F7;
+    --borde: #E2E8F0;
+
+    --verde: #10B981;
+    --naranja: #F59E0B;
+    --rojo: #EF4444;
+    --morado: #8B5CF6;
+
+    --radio: 14px;
+}
+
+
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+   ========================================================= */
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    font-family: "Nunito", Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto-principal);
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.main-sidebar,
+.main-sidebar::before {
+    background: #0F172A !important;
+    background-color: #0F172A !important;
+}
+
+.main-sidebar {
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+
+/* =========================================================
+   ÁREA INTERNA DEL SIDEBAR
+   ========================================================= */
+
+.main-sidebar .sidebar {
+    background: #0F172A !important;
+}
+
+
+/* =========================================================
+   LOGO / MARCA
+   ========================================================= */
+
+.brand-link {
+    background: #0F172A !important;
+    background-color: #0F172A !important;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+
+    min-height: 68px;
+
+    display: flex !important;
+    align-items: center;
+
+    padding: 10px 15px !important;
+}
+
+
+/* Imagen del logo */
+
+.brand-link .brand-image {
+    width: 44px !important;
+    height: 44px !important;
+
+    object-fit: contain;
+
+    margin-left: 0 !important;
+    margin-right: 10px !important;
+
+    float: none !important;
+}
+
+
+/* Texto del logo */
+
+.brand-link .brand-text {
+    color: #FFFFFF !important;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   MENÚ LATERAL
+   ========================================================= */
+
+.nav-sidebar {
+    padding-top: 12px;
+}
+
+.nav-sidebar .nav-item {
+    margin-bottom: 3px;
+}
+
+
+/* Links */
+
+.nav-sidebar .nav-link {
+    color: #CBD5E1 !important;
+
+    border-radius: 8px;
+
+    margin: 3px 10px;
+
+    padding: 11px 12px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* Iconos */
+
+.nav-sidebar .nav-link i {
+    color: #94A3B8 !important;
+
+    width: 22px;
+
+    font-size: 15px;
+}
+
+
+/* Hover */
+
+.nav-sidebar .nav-link:hover {
+    background: #1E293B !important;
+
+    color: #FFFFFF !important;
+}
+
+
+/* Icono hover */
+
+.nav-sidebar .nav-link:hover i {
+    color: #60A5FA !important;
+}
+
+
+/* Elemento activo */
+
+.nav-sidebar .nav-link.active {
+    background: #2563EB !important;
+
+    color: #FFFFFF !important;
+
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.30);
+}
+
+
+/* Icono activo */
+
+.nav-sidebar .nav-link.active i {
+    color: #FFFFFF !important;
+}
+
+
+/* Flechas */
+
+.nav-sidebar .nav-link > .right,
+.nav-sidebar .nav-link > p > .right {
+    color: #94A3B8 !important;
+}
+
+
+/* =========================================================
+   TÍTULOS DE SECCIONES DEL MENÚ
+   ========================================================= */
+
+.nav-header {
+    color: #64748B !important;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    padding: 18px 20px 8px !important;
+}
+
+
+/* =========================================================
+   NAVBAR SUPERIOR
+   ========================================================= */
+
+.main-header {
+    background: #FFFFFF !important;
+
+    border-bottom: 1px solid var(--borde) !important;
+
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+}
+
+
+/* Links navbar */
+
+.main-header .nav-link {
+    color: var(--texto-secundario) !important;
+}
+
+
+/* Hover navbar */
+
+.main-header .nav-link:hover {
+    color: var(--azul-principal) !important;
+}
+
+
+/* Botón menú */
+
+.main-header .fa-bars {
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   ÁREA PRINCIPAL
+   ========================================================= */
+
+.content-wrapper {
+    background: #EEF2F7 !important;
+}
+
+
+/* =========================================================
+   CABECERA DEL DASHBOARD
+   ========================================================= */
+
+.content-header {
+    padding: 22px 25px 10px;
+}
+
+
+.dashboard-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #F8FAFC 0%,
+        #EEF4FF 100%
+    );
+
+    border: 1px solid #E2E8F0;
+
+    border-radius: 16px;
+
+    padding: 20px 22px;
+
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+}
+
+
+.dashboard-header h1 {
+    margin: 0;
+
+    color: var(--texto-principal);
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+.dashboard-header p {
+    margin: 6px 0 0;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+.dashboard-date {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--borde);
+
+    border-radius: 10px;
+
+    padding: 10px 15px;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+
+.dashboard-date i {
+    color: var(--azul-principal);
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+.content {
+    padding: 10px 25px 25px;
+}
+
+
+/* =========================================================
+   TARJETAS PRINCIPALES
+   ========================================================= */
+
+.dashboard-cards {
+    margin-bottom: 20px;
+}
+
+
+.dashboard-card {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    min-height: 128px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #E2E8F0;
+
+    border-radius: 16px;
+
+    padding: 22px;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.045);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+    overflow: hidden;
+}
+
+
+/* Detalle decorativo */
+
+.dashboard-card::after {
+    content: "";
+
+    position: absolute;
+
+    right: -35px;
+    top: -35px;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    background: rgba(37, 99, 235, 0.035);
+
+    pointer-events: none;
+}
+
+
+/* Hover */
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #CBD5E1;
+
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   ICONOS DE TARJETAS
+   ========================================================= */
+
+.card-icon {
+    position: relative;
+
+    z-index: 1;
+
+    width: 56px;
+    height: 56px;
+
+    min-width: 56px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    margin-right: 17px;
+
+    font-size: 21px;
+
+    transition: transform 0.25s ease;
+}
+
+
+.dashboard-card:hover .card-icon {
+    transform: scale(1.05);
+}
+
+
+/* Ventas */
+
+.sales-icon {
+    background: rgba(37, 99, 235, 0.10);
+
+    color: var(--azul-principal);
+}
+
+
+/* Clientes */
+
+.clients-icon {
+    background: rgba(16, 185, 129, 0.10);
+
+    color: var(--verde);
+}
+
+
+/* Productos */
+
+.products-icon {
+    background: rgba(139, 92, 246, 0.10);
+
+    color: var(--morado);
+}
+
+
+/* Stock */
+
+.stock-icon {
+    background: rgba(245, 158, 11, 0.10);
+
+    color: var(--naranja);
+}
+
+
+/* =========================================================
+   INFORMACIÓN DE LAS TARJETAS
+   ========================================================= */
+
+.card-info {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.card-info h3 {
+    margin: 0;
+
+    color: var(--texto-principal);
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.3px;
+}
+
+
+.card-info p {
+    margin: 5px 0 0;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   PANELES DEL DASHBOARD
+   ========================================================= */
+
+.dashboard-panel {
+    background: #FFFFFF;
+
+    border: 1px solid #E2E8F0;
+
+    border-radius: 16px;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.045);
+
+    overflow: hidden;
+
+    transition:
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.dashboard-panel:hover {
+    border-color: #CBD5E1;
+
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =========================================================
+   CABECERA DE LOS PANELES
+   ========================================================= */
+
+.panel-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    min-height: 62px;
+
+    padding: 15px 20px;
+
+    border-bottom: 1px solid var(--borde);
+
+    background: #F8FAFC;
+}
+
+
+.panel-title-icon {
+    color: var(--azul-principal);
+
+    margin-right: 8px;
+
+    font-size: 15px;
+}
+
+
+.panel-header h3,
+.panel-header .panel-title {
+    margin: 0;
+
+    color: var(--texto-principal);
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.period-button,
+.view-button {
+    border: 1px solid var(--borde);
+
+    background: #FFFFFF;
+
+    color: var(--texto-secundario);
+
+    border-radius: 8px;
+
+    padding: 8px 13px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.period-button:hover,
+.view-button:hover {
+    background: #EFF6FF;
+
+    border-color: #BFDBFE;
+
+    color: var(--azul-principal);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   GRÁFICO
+   ========================================================= */
+
+.chart-placeholder {
+    min-height: 280px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+}
+
+
+.chart-message {
+    text-align: center;
+
+    color: var(--texto-secundario);
+}
+
+
+.chart-icon {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #94A3B8;
+
+    font-size: 42px;
+}
+
+
+.chart-message p {
+    margin: 0;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+.chart-message small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #94A3B8;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   ESTADO VACÍO
+   ========================================================= */
+
+.empty-state {
+    min-height: 180px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+
+.empty-icon {
+    margin-bottom: 12px;
+
+    color: #94A3B8;
+
+    font-size: 38px;
+}
+
+
+.empty-state p {
+    margin: 0;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   TABLA
+   ========================================================= */
+
+.dashboard-table {
+    width: 100%;
+
+    margin: 0;
+
+    border-collapse: collapse;
+}
+
+
+.dashboard-table thead th {
+    background: #F8FAFC;
+
+    color: #64748B;
+
+    border-bottom: 1px solid var(--borde);
+
+    padding: 13px 15px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+}
+
+
+.dashboard-table tbody td {
+    padding: 15px;
+
+    border-bottom: 1px solid #F1F5F9;
+
+    color: var(--texto-principal);
+
+    font-size: 13px;
+}
+
+
+.dashboard-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+
+.dashboard-table tbody tr:hover {
+    background: #F8FAFC;
+}
+
+
+.table-empty {
+    padding: 40px 20px !important;
+
+    text-align: center;
+
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.main-footer {
+    background: #FFFFFF !important;
+
+    border-top: 1px solid var(--borde) !important;
+
+    color: #94A3B8 !important;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   QUITAR SOMBRAS PESADAS DE ADMINLTE
+   ========================================================= */
+
+.elevation-1,
+.elevation-2,
+.elevation-3,
+.elevation-4,
+.elevation-5 {
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   SCROLLBAR DEL SIDEBAR
+   ========================================================= */
+
+.main-sidebar ::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.main-sidebar ::-webkit-scrollbar-track {
+    background: #0F172A;
+}
+
+
+.main-sidebar ::-webkit-scrollbar-thumb {
+    background: #334155;
+
+    border-radius: 10px;
+}
+
+
+.main-sidebar ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .dashboard-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .dashboard-date {
+        align-self: flex-start;
+    }
+
+
+    .content-header {
+        padding-left: 20px;
+
+        padding-right: 20px;
+    }
+
+
+    .content {
+        padding-left: 20px;
+
+        padding-right: 20px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - CELULAR
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .dashboard-header h1 {
+        font-size: 23px;
+    }
+
+
+    .dashboard-card {
+        min-height: 105px;
+
+        padding: 17px;
+    }
+
+
+    .card-icon {
+        width: 48px;
+        height: 48px;
+
+        min-width: 48px;
+
+        font-size: 18px;
+    }
+
+
+    .card-info h3 {
+        font-size: 21px;
+    }
+
+
+    .panel-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .chart-placeholder {
+        min-height: 220px;
+    }
+
+
+    .dashboard-table {
+        min-width: 600px;
+    }
+
+
+    .dashboard-panel {
+        overflow-x: auto;
+    }
+}
+
+
+/* =========================================================
+   PANTALLAS PEQUEÑAS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .content-header {
+        padding: 15px;
+    }
+
+
+    .content {
+        padding: 5px 15px 20px;
+    }
+
+
+    .dashboard-header h1 {
+        font-size: 21px;
+    }
+
+
+    .dashboard-header p {
+        font-size: 13px;
+    }
+
+
+    .dashboard-date {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+
+    .dashboard-card {
+        border-radius: 14px;
+    }
+}

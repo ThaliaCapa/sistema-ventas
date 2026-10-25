@@ -134,9 +134,9 @@ class EmpresaController extends Controller
         $user->empresa_id = $empresaId;
         $user->save();
 
-        // Redireccionar a la vista de éxito con un mensaje
-        return redirect()->route('admin.empresas.create')
-            ->with('success', 'Empresa registrada correctamente.');
+        // Redirigir automáticamente al login mostrando el logo de la empresa recién creada
+        return redirect()->route('login', ['empresa_id' => $empresaId])
+            ->with('success', 'Empresa registrada correctamente. Ahora puedes iniciar sesión.');
     }
 
     public function show(Empresa $empresa)
