@@ -1,23 +1,18 @@
+
 <?php
 
 return [
-
 
     'title' => 'Sistema de Ventas',
     'title_prefix' => '',
     'title_postfix' => '',
 
-
     'use_ico_only' => false,
     'use_full_favicon' => false,
-
-   
 
     'google_fonts' => [
         'allowed' => true,
     ],
-
-   
 
     'logo' => '<b>Sistema</b>de Ventas',
     'logo_img' => 'vendor/adminlte/dist/img/Logo_BITEK_1.png',
@@ -25,7 +20,6 @@ return [
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Logo Sistema de Ventas',
-
 
     'auth_logo' => [
         'enabled' => true,
@@ -37,8 +31,6 @@ return [
             'height' => 50,
         ],
     ],
-
-   
 
     'preloader' => [
         'enabled' => false,
@@ -52,15 +44,12 @@ return [
         ],
     ],
 
-
     'usermenu_enabled' => true,
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
-
-    
 
     'layout_topnav' => null,
     'layout_boxed' => null,
@@ -69,15 +58,12 @@ return [
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
-    
-
     'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
     'classes_auth_btn' => 'btn-flat btn-primary',
-
 
     'classes_body' => '',
     'classes_brand' => '',
@@ -89,8 +75,6 @@ return [
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
 
-
-
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
     'sidebar_collapse_auto_size' => false,
@@ -101,8 +85,6 @@ return [
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 300,
 
-    
-
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
@@ -110,7 +92,6 @@ return [
     'right_sidebar_push' => true,
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
     'right_sidebar_scrollbar_auto_hide' => 'l',
-
 
     'use_route_url' => false,
     'dashboard_url' => 'home',
@@ -123,25 +104,21 @@ return [
     'profile_url' => false,
     'disable_darkmode_routes' => false,
 
-    
-
     'laravel_asset_bundling' => false,
     'laravel_css_path' => 'css/app.css',
     'laravel_js_path' => 'js/app.js',
 
-   
+    /*
+    |--------------------------------------------------------------------------
+    | Menú lateral
+    |--------------------------------------------------------------------------
+    */
 
     'menu' => [
 
-          [
-            'text' => 'Dashboard',
-            'url'  => 'home',
-            'icon' => 'fas fa-fw fa-home',
-        ],
-
         [
-            'text' => 'CONFIGURACIÓN',
-            'icon' => 'fas fa-fw fa-cogs',
+            'text' => 'Empresa',
+            'icon' => 'fas fa-fw fa-home',
             'submenu' => [
 
                 [
@@ -149,13 +126,22 @@ return [
                     'route' => 'admin.empresas.edit',
                     'icon' => 'fas fa-building',
                 ],
+            ],
+        ],
 
+        [
+            'text' => 'Roles',
+            'icon' => 'fas fa-fw fa-user-shield',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Roles',
+                    'route' => 'admin.roles.index',
+                    'icon' => 'fas fa-fw fa-list',
+                ],
             ],
         ],
 
     ],
-
-  
 
     'filters' => [
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
@@ -167,8 +153,8 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
     ],
 
-  
     'plugins' => [
+
         'Datatables' => [
             'active' => false,
             'files' => [
@@ -189,6 +175,7 @@ return [
                 ],
             ],
         ],
+
         'Select2' => [
             'active' => false,
             'files' => [
@@ -204,6 +191,7 @@ return [
                 ],
             ],
         ],
+
         'Chartjs' => [
             'active' => false,
             'files' => [
@@ -214,6 +202,7 @@ return [
                 ],
             ],
         ],
+
         'Sweetalert2' => [
             'active' => false,
             'files' => [
@@ -224,6 +213,7 @@ return [
                 ],
             ],
         ],
+
         'Pace' => [
             'active' => false,
             'files' => [
@@ -239,14 +229,15 @@ return [
                 ],
             ],
         ],
-    ],
 
+    ],
 
     'iframe' => [
         'default_tab' => [
             'url' => null,
             'title' => null,
         ],
+
         'buttons' => [
             'close' => true,
             'close_all' => true,
@@ -255,6 +246,7 @@ return [
             'scroll_right' => true,
             'fullscreen' => true,
         ],
+
         'options' => [
             'loading_screen' => 1000,
             'auto_show_new_tab' => true,
@@ -262,9 +254,6 @@ return [
         ],
     ],
 
-   
     'livewire' => false,
 
-    
 ];
-    

@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -9,6 +8,7 @@ use App\Models\Empresa;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,6 @@ Route::get('/', function () {
     }
 
     return redirect()->route('login');
-
 });
 
 /*
@@ -38,10 +37,6 @@ Auth::routes();
 |--------------------------------------------------------------------------
 | Ruta pública para consultar el logo de la empresa
 |--------------------------------------------------------------------------
-|
-| Busca al usuario mediante el correo ingresado y obtiene
-| el logo de la empresa asociada a su cuenta.
-|
 */
 
 Route::get('/empresa/logo-por-correo', function (\Illuminate\Http\Request $request) {
@@ -75,7 +70,6 @@ Route::get('/empresa/logo-por-correo', function (\Illuminate\Http\Request $reque
     return response()->json([
         'logo' => asset('storage/' . $empresa->logo),
     ]);
-
 })->name('empresa.logo-por-correo');
 
 /*
@@ -177,6 +171,39 @@ Route::middleware('auth')->group(function () {
     Route::delete('/usuarios/{usuario}', [UsuarioController::class, 'destroy'])
         ->name('admin.usuarios.destroy');
 
+    /*
+    |--------------------------------------------------------------------------
+    | ROLES
+    |--------------------------------------------------------------------------
+    */
+
+    // Listar roles.
+    Route::get('/roles', [RolController::class, 'index'])
+        ->name('admin.roles.index');
+
+    // Crear rol.
+    Route::get('/roles/crear', [RolController::class, 'create'])
+        ->name('admin.roles.create');
+
+    // Guardar rol.
+    Route::post('/roles', [RolController::class, 'store'])
+        ->name('admin.roles.store');
+
+    // Ver rol.
+    Route::get('/roles/{rol}', [RolController::class, 'show'])
+        ->name('admin.roles.show');
+
+    // Editar rol.
+    Route::get('/roles/{rol}/editar', [RolController::class, 'edit'])
+        ->name('admin.roles.edit');
+
+    // Actualizar rol.
+    Route::put('/roles/{rol}', [RolController::class, 'update'])
+        ->name('admin.roles.update');
+
+    // Eliminar rol.
+    Route::delete('/roles/{rol}', [RolController::class, 'destroy'])
+        ->name('admin.roles.destroy');
 });
 
 /*
