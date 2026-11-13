@@ -141,6 +141,20 @@ return [
             ],
         ],
 
+
+        [
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Usuarios',
+                    'route' => 'admin.usuarios.index',
+                    'icon' => 'fas fa-fw fa-list',
+                ],
+            ],
+        ],
+
+
     ],
 
     'filters' => [
